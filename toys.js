@@ -384,3 +384,224 @@ function bonusTime(salary, bonus) {
 function reverseWords(str) {
   return str.split(" ").reverse().join(" ");
 }
+
+// Reverse words 2
+
+function reverseWords(str) {
+  return str.split("").reverse().join("").split(" ").reverse().join(" ");
+}
+
+// Pirates!! Are the Cannons ready!??
+
+function cannonsReady(gunners) {
+  for (var mates in gunners) {
+    if (gunners[mates] === 'nay') {
+      return 'Shiver me timbers!';
+    }
+  }
+  return 'Fire!';
+}
+
+// Basic Mathematical Operations
+
+function basicOp(operation, value1, value2) {
+  return eval(value1 + operation + value2);
+}
+
+// Numbers with this digit inside
+
+function numbersWithDigitInside(x, d) {
+  var digits = [];
+  for (i = 1; i <= x; i++) {
+    if (i.toString().indexOf(d) != -1) {
+      digits.push(i);
+    }
+  }
+  if (digits.length === 0) {
+    return [0, 0, 0];
+  }
+  return [digits.length, eval(digits.join("+")), eval(digits.join("*"))];
+}
+
+// Determine offspring sex based on genes XX and XY chromosomes
+
+function chromosomeCheck(sperm) {
+  if (sperm === 'XX') {
+    return "Congratulations! You're going to have a daughter.";
+  } else if (sperm === 'XY') {
+    return "Congratulations! You're going to have a son.";
+  }
+}
+
+// Replace With Alphabet Position
+
+function alphabetPosition(text) {
+  var result = "";
+  for (var i = 0; i < text.length; i++) {
+    var code = text.toUpperCase().charCodeAt(i);
+    if (code > 64 && code < 91) result += (code - 64) + " ";
+  }
+
+  return result.trim();
+}
+
+// Price of Mangoes
+
+function mango(quantity, price) {
+  return price * (Math.floor(quantity / 3) * 2 + quantity % 3);
+}
+
+// Power of two
+
+function isPowerOfTwo(n) {
+  var i = 1;
+  while (i < n) {
+
+    if (Math.pow(2, i) === n) {
+      return true;
+    } else {
+      i += 1;
+    }
+  }
+  return false;
+}
+
+// Powers of 2
+
+function powersOfTwo(n) {
+  var result = [];
+  for (var i = 0; i <= n; i++) {
+    result.push(Math.pow(2, i));
+  }
+  return result;
+}
+
+// Write a function to sort a given string into alphabetical order
+
+function sort(str) {
+  var order = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789!?\“\”\'\’()*+,.;:…<=>[]_{}~\"$%&^£';
+  var outputString = "";
+  for (var orderIndex = 0; orderIndex < order.length; orderIndex++) {
+    for (var strIndex = 0; strIndex < str.length; strIndex++) {
+      if (str.slice(strIndex, strIndex + 1) == order.slice(orderIndex, orderIndex + 1)) {
+        outputString += str.slice(strIndex, strIndex + 1);
+      }
+    }
+  }
+  return outputString;
+}
+
+// Palindrome Strings
+
+function isPalindrome(line) {
+  var lineP = line.split('').reverse().join('');
+  if (lineP === line) {
+    return true;
+  } else if (lineP !== line) {
+    return false;
+  }
+}
+
+// Give me Diamond
+
+function diamond(n) {
+  if (typeof n != 'number' || n % 2 === 0 || n < 0) {
+    return null;
+  }
+  var c = (n + 1) / 2;
+  var s = '';
+  for (var i = 1; i <= n; i++) {
+    s += (new Array(Math.abs(c - i) + 1).join(' ') + new Array(n - 2 * Math.abs(c - i) + 1).join('*') + '\n');
+  }
+  return s;
+}
+
+// Summing a number's digits
+
+function sumDigits(number) {
+  var newArr = [];
+  var str = Math.abs(number).toString();
+  for (var i = 0; i < str.length; i++) {
+    newArr.push(+str.charAt(i));
+  }
+  for (var j = 0, sum = 0; j < newArr.length; sum += newArr[j++]);
+  return sum;
+}
+
+// Unique In Order
+
+var uniqueInOrder = function(iterable) {
+  var newArr = [];
+  for (var i = 0; i < iterable.length; i++) {
+    if (iterable[i] !== iterable[i + 1]) {
+      newArr.push(iterable[i]);
+    }
+  }
+  return newArr;
+};
+
+// Hex to Decimal
+
+function hexToDec(hexString) {
+  return parseInt(hexString, 16);
+}
+
+// Arithmetic Sequence!
+
+var nthterm = function(first, n, c) {
+  var sum = first;
+  for (var i = 0; i < n; i++) {
+    sum += c;
+  }
+  return sum;
+};
+
+// Caffeine Script
+
+function caffeineBuzz(n) {
+  if (n % 3 === 0 && n % 4 === 0 && n % 2 === 0) {
+    return "CoffeeScript";
+  }
+  if (n % 3 === 0 && n % 2 === 0) {
+    return "JavaScript";
+  } else if (n % 3 === 0) {
+    return "Java";
+  } else if (n % 3 === 0 && n % 4 === 0) {
+    return "Coffee";
+  } else {
+    return "mocha_missing!";
+  }
+}
+
+// Every nth array element. (Basic)
+
+function every(arr, interval, start) {
+  var result = [];
+  for (var i = start || 0; i < arr.length; i += interval || 1) {
+    result.push(arr[i]);
+  }
+  return result;
+}
+
+// Complete The Pattern #5 - Even Ladder
+
+function pattern(n) {
+  if (n <= 1) {
+    return '';
+  }
+  var arr = [];
+  for (var i = 2; i <= n; i += 2) {
+    arr.push(i.toString().repeat(i));
+  }
+  return arr.join("\n");
+}
+
+// Training JS #6: Basic data types--Boolean and conditional statements if..else
+
+function trueOrFalse(val) {
+  if (val) {
+    return 'true';
+  } else {
+    return 'false';
+  }
+}
