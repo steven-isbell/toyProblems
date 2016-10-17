@@ -605,3 +605,216 @@ function trueOrFalse(val) {
     return 'false';
   }
 }
+
+// Count the Monkeys!
+
+function monkeyCount(n) {
+  var monkeyCount = [];
+  for (var i = 0; i < n; i++) {
+    monkeyCount[i] = i + 1;
+  }
+  return monkeyCount;
+}
+
+// Insert dashes
+
+function insertDash(num) {
+  var numbers = '' + num;
+  var result = '';
+  for (var i = 0; i < numbers.length; i++) {
+    if (i > 0 && numbers[i - 1] % 2 !== 0 && numbers[i] % 2 !== 0) {
+      result += '-';
+    }
+    result += numbers[i];
+  }
+
+  return result;
+}
+
+// Are they the "same"?
+
+function comp(array1, array2) {
+  if (array1 === null || array2 === null) return false;
+  console.log(array1, array2);
+  for (var i = 0; i < array1.length; i++) {
+    var item = array1[i];
+    if (array2.indexOf(item * item) === -1) {
+      return false;
+    }
+  }
+  for (var j = 0; j < array2.length; j++) {
+    var item2 = array2[j];
+    if (array1.indexOf(Math.sqrt(item2)) === -1) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+// Grasshopper - Personalized Message
+
+function greet(name, owner) {
+  if (name === owner) {
+    return 'Hello boss';
+  } else {
+    return 'Hello guest';
+  }
+}
+
+// Grasshopper - If/else syntax debug
+
+function checkAlive(health) {
+  return health > 0;
+}
+
+// Deutschstunde
+
+function derDieDas(wort) {
+  var vowels = ['a', 'e', 'i', 'o', 'u', 'ä', 'ö', 'ü'];
+  var counter = 0;
+  var arr = (wort.toLowerCase()).split("");
+  for (i = 0; i < arr.length; i++) {
+    if (vowels.indexOf(arr[i]) != -1) {
+      counter++;
+    }
+  }
+  if (counter < 2) {
+    return "das " + wort;
+  } else if (counter < 4) {
+    return "die " + wort;
+  } else {
+    return "der " + wort;
+  }
+}
+
+// Remove the noise from the string
+
+function removeNoise(str) {
+  str.split('');
+  return str.replace(/[%$&/#·@|º\\ª]/gi, '');
+}
+
+// Find an employees role in the company
+
+function findEmployeesRole(name) {
+  name = name.split(' ');
+  let employee = employees.filter(e => e.firstName === name[0] && e.lastName === name[1]);
+  return employee.length ? employee[0].role : 'Does not work here!';
+}
+
+// Vowel Count
+
+function getCount(str) {
+  var m = str.match(/[aeiou]/gi);
+  return m === null ? 0 : m.length;
+}
+
+// Highest and Lowest
+
+function highAndLow(numbers) {
+  numbers = numbers.split(" ");
+  return Math.max.apply(null, numbers) + " " + Math.min.apply(null, numbers);
+}
+
+// Tortoise racing
+
+function race(v1, v2, g) {
+  var time = [];
+  if (v1 >= v2) {
+    return null;
+  }
+  var seconds = (g * 3600) / (v2 - v1);
+  var rounded1 = Math.floor(seconds / 3600);
+  var rounded2 = Math.floor((seconds % 3600) / 60);
+  var rounded3 = Math.floor(seconds % 60);
+  time.push(rounded1, rounded2, rounded3);
+  return time;
+}
+
+// Isograms
+
+function isIsogram(str) {
+  var letters = str.toLowerCase().split('');
+  var checkLetters = [];
+
+  letters.forEach(function(letter) {
+    if (checkLetters.indexOf(letter) === -1) {
+      checkLetters.push(letter);
+    }
+  });
+
+  return letters.length === checkLetters.length ? true : false;
+
+}
+
+// Add property to every object in array
+
+questions.forEach(function(i) {
+  i.usersAnswer = null;
+});
+
+// Convert a Boolean to a String
+
+function booleanToString(b) {
+  var x = b.toString();
+  return x;
+}
+
+// Find the next perfect square!
+
+function findNextSquare(sq) {
+  var sqRt = Math.sqrt(sq);
+  if (NaN === sqRt || sqRt !== parseInt(sqRt, 10)) {
+    return -1;
+  }
+  return Math.pow(sqRt + 1, 2);
+}
+
+// Jaden Casing Strings
+
+String.prototype.toJadenCase = function() {
+  var words = this.valueOf().split(' ');
+  for (var i = 0, len = words.length; i < len; i++) {
+    words[i] = words[i].charAt(0).toUpperCase() + words[i].substr(1);
+  }
+  return words.join(' ').trim();
+};
+
+// Opposite number
+
+function opposite(number) {
+  return number * -1;
+}
+
+// Are You Playing Banjo?
+
+function areYouPlayingBanjo(name) {
+  if (name[0].toLowerCase() === 'r')
+    return name + " plays banjo";
+  else
+    return name + " does not play banjo";
+}
+
+// Even or Odd
+
+function even_or_odd(number) {
+  if (number % 2 === 0) return "Even";
+  else return "Odd";
+}
+
+// Broken Greetings
+
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.greet = function(otherName) {
+  return ("Hi " + otherName + ", my name is " + this.name);
+};
+
+// Multiply
+
+function multiply(a, b) {
+  return a * b;
+}
