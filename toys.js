@@ -171,3 +171,216 @@ const sumMix = (x) => {
   });
   return total;
 };
+
+// Count number of hairs
+
+const bald = (x) => {
+  let y = '';
+  let count = 0;
+
+  for (var i = 0; i < x.length; i++) {
+    if (x[i] === '-') {
+      y += x[i];
+    } else if (x[i] === '/') {
+      count += 1;
+      y += '-';
+    }
+  }
+
+  if (count === 0) {
+    return [y, 'Clean!'];
+  }
+  if (count === 1) {
+    return [y, 'Unicorn!'];
+  }
+  if (count === 2) {
+    return [y, 'Homer!'];
+  }
+  if (count >= 3 && count <= 5) {
+    return [y, 'Careless!'];
+  }
+  if (count > 5) {
+    return [y, 'Hobo!'];
+  }
+
+};
+
+// Your goal in this kata is to define the result of such a game given nb_petals > 0, the number of petals torn.
+
+function howMuchILoveYou(nbPetals) {
+  const arr = ['I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all'];
+  return arr[(nbPetals - 1) % 6];
+}
+
+// Remove String Spaces
+
+function noSpace(x) {
+  return x.trim().replace(/\s/g, '');
+}
+
+// Pre-FizzBuzz Workout #1
+
+function preFizz(n) {
+  let arr = [];
+  for (var i = 1; i <= n; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
+
+// The Wide-Mouthed frog!
+
+let mouthSize = (animal) => {
+  return animal.toLowerCase() === 'alligator' ? 'small' : 'wide';
+};
+
+// Fake Binary
+
+function fakeBin(x) {
+  return x.split('').map(y => y < 5 ? 0 : 1).join('');
+}
+
+// Title Case
+
+function titleCase(title, minorWords) {
+  minorWords = minorWords || '';
+  minorWords = minorWords.split(' ').map(myWord => myWord.toLowerCase());
+
+  return title.split(' ').map((myWord, index) => {
+    myWord = myWord.toLowerCase();
+    if (index === 0 || minorWords.indexOf(myWord) === -1) {
+      return myWord.charAt(0).toUpperCase() + myWord.slice(1);
+    }
+    return myWord;
+  }).join(' ');
+}
+
+// Formatting decimal places #0
+
+function twoDecimalPlaces(n) {
+  return parseFloat(n.toFixed(2));
+}
+
+// Find the Remainder
+
+function remainder(a, b) {
+  if (a > b) {
+    return a % b;
+  } else {
+    return b % a;
+  }
+
+}
+
+// Check if a number is a part of an arbitrary fibonacci sequence
+
+function isFibo(a, b, f) {
+  function fibonacci(a, b) {
+    var myArr = [a, b];
+    for (var i = 0; i <= f; i++) {
+      myArr.push(myArr[i] + myArr[i + 1]);
+    }
+    return myArr;
+  }
+  return (fibonacci(a, b).indexOf(f) !== -1);
+}
+
+// Fibonacci Number
+
+var fib = function(steps) {
+  var myArr = [0, 1];
+  for (var i = 0; myArr.length <= steps; i++) {
+    myArr.push(myArr[i] + myArr[i + 1]);
+  }
+  return myArr[steps];
+};
+
+// Memoized Fibonacci
+
+function fibIterRecursive(n, a, b) {
+  if (n === 0) {
+    return b;
+  } else {
+    return fibIterRecursive(n - 1, a + b, a);
+  }
+}
+
+function fibonacci(n) {
+  return fibIterRecursive(n, 1, 0);
+}
+
+// Fast Fibonacci
+
+function fibIterRecursive(n, a, b) {
+  if (n === 0) {
+    return b;
+  } else {
+    return fibIterRecursive(n - 1, a + b, a);
+  }
+}
+
+function fib(n) {
+  return fibIterRecursive(n, 1, 0);
+}
+
+// Recursion #2 - Fibonacci
+
+function fibonacci(n) {
+  if (n <= 2) {
+    return 1;
+  } else {
+    return fibonacci(n - 2) + fibonacci(n - 1);
+  }
+}
+
+// Fibonacci's FizzBuzz
+
+var fibsFizzBuzz = function(n) {
+  var newArr = [];
+  if (n === 1) {
+    myArr = [1];
+  } else {
+    myArr = [1, 1];
+  }
+
+  for (var i = 0; myArr.length < n; i++) {
+    myArr.push(myArr[i] + myArr[i + 1]);
+  }
+
+  for (i = 0; i < myArr.length; i++) {
+    var setNumber = myArr[i];
+
+    if (setNumber % 3 === 0 && setNumber % 5 !== 0) {
+      newArr.push("Fizz");
+    }
+    if (setNumber % 3 !== 0 && setNumber % 5 === 0) {
+      newArr.push("Buzz");
+    }
+    if (setNumber % 3 === 0 && setNumber % 5 === 0) {
+      newArr.push("FizzBuzz");
+    }
+    if (setNumber % 3 !== 0 && setNumber % 5 !== 0) {
+      newArr.push(setNumber);
+    }
+  }
+
+  return newArr;
+};
+
+// Grasshopper - Combine strings
+
+function combineNames(first, last) {
+  return first + ' ' + last;
+}
+
+// Do I get a bonus?
+
+function bonusTime(salary, bonus) {
+  return (bonus) ? "£" + (salary * 10) : "£" + salary;
+}
+
+// Reversed Words
+
+function reverseWords(str) {
+  return str.split(" ").reverse().join(" ");
+}
