@@ -719,24 +719,24 @@ function highAndLow(numbers) {
 
 // Tortoise racing
 
-function race(v1, v2, g) {
-  var time = [];
+const race = (v1, v2, g) => {
+  let time = [];
   if (v1 >= v2) {
     return null;
   }
-  var seconds = (g * 3600) / (v2 - v1);
-  var rounded1 = Math.floor(seconds / 3600);
-  var rounded2 = Math.floor((seconds % 3600) / 60);
-  var rounded3 = Math.floor(seconds % 60);
+  let seconds = (g * 3600) / (v2 - v1);
+  let rounded1 = Math.floor(seconds / 3600);
+  let rounded2 = Math.floor((seconds % 3600) / 60);
+  let rounded3 = Math.floor(seconds % 60);
   time.push(rounded1, rounded2, rounded3);
   return time;
-}
+};
 
 // Isograms
 
-function isIsogram(str) {
-  var letters = str.toLowerCase().split('');
-  var checkLetters = [];
+const isIsogram = (str) => {
+  let letters = str.toLowerCase().split('');
+  let checkLetters = [];
 
   letters.forEach(function(letter) {
     if (checkLetters.indexOf(letter) === -1) {
@@ -746,7 +746,7 @@ function isIsogram(str) {
 
   return letters.length === checkLetters.length ? true : false;
 
-}
+};
 
 // Add property to every object in array
 
@@ -818,3 +818,334 @@ Person.prototype.greet = function(otherName) {
 function multiply(a, b) {
   return a * b;
 }
+
+//mean of an array
+
+function getAverage(marks) {
+  return Math.floor(marks.reduce((a, b) => a + b) / marks.length);
+}
+
+//Sum of positive
+function positiveSum(arr) {
+  let newArr = [];
+  if (!arr.length) {
+    return 0;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      newArr.push(arr[i]);
+    }
+  }
+  if (!newArr.length) {
+    return 0;
+  }
+  return newArr.reduce((a, b) => {
+    return a + b;
+  });
+}
+
+//JS is weird: Return a
+
+x = (![] + [])[+!+[]];
+
+//sum of all the multiples of 3 or 5
+
+function findSum(n) {
+  let arr = [];
+  for (var i = 1; i <= n; i++) {
+    if (i % 3 === 0 || i % 5 === 0) {
+      arr.push(i);
+    }
+  }
+  return arr.reduce(function(a, b) {
+    return a + b;
+  });
+}
+
+//What is the point
+function pointless(...chars) {
+  return "Rick Astley";
+}
+
+//Secret Knock
+knock(knock)();
+knock(knock)();
+
+//Jenny's Message
+
+function greet(name) {
+  if (name === "Johnny") {
+    return "Hello, my love!";
+  }
+  return "Hello, " + name + "!";
+
+}
+
+//Nuclear Missile Manager
+
+function launchAll(launchMissile) {
+  for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+      launchMissile(i);
+    }, i * 1000);
+  }
+}
+
+//Wealth equality, finally!
+
+function redistributeWealth(wealth) {
+  let total = wealth.reduce(function(a, b) {
+    return a + b;
+  });
+  return wealth.fill(total / wealth.length);
+}
+
+//Chuck Norris VII
+
+function ifChuckSaysSo() {
+  return !true;
+}
+
+//Split Strings
+
+function solution(str) {
+  var chunks = [];
+  for (var i = 0, charsLength = str.length; i < charsLength; i += 2) {
+    chunks.push(str.substring(i, i + 2));
+  }
+  for (var j = 0; j < chunks.length; j++) {
+    if (chunks[j].length === 1) {
+      chunks[j] = chunks[j] + '_';
+    }
+  }
+  return chunks;
+}
+
+// Exclamation marks series #13: Count the number of exclamation marks and question marks, return the product
+
+function product(s) {
+  let ex = 0;
+  let qu = 0;
+  for (var i = 0; i < s.length; i++) {
+    s[i] === '!' ? ex += 1 : qu += 1;
+  }
+  return ex * qu;
+}
+
+//Plural
+
+const plural = n => {
+  return n > 1 || n < 1 ? true : false;
+};
+
+//Multiplication Table
+
+const multiplicationTable = num => {
+  let returnArr = [];
+  for (let i = 1; i <= num; i++) {
+    returnArr[i - 1] = [];
+    for (let j = 1; j <= num; j++) {
+      returnArr[i - 1][j - 1] = (i * j);
+    }
+  }
+  return returnArr;
+};
+
+//Clay Pigeon Shooting
+
+const shoot = x => {
+  let Pete = 0;
+  let Phil = 0;
+  for (let key in x) {
+    if (x[key][1] === true) {
+      if (x[key][0].P1.match(/X/g) !== null) {
+        Pete += x[key][0].P1.match(/X/g).length * 2;
+      }
+      if (x[key][0].P2.match(/X/g) !== null) {
+        Phil += x[key][0].P2.match(/X/g).length * 2;
+      }
+
+    } else {
+      if (x[key][0].P1.match(/X/g) !== null) {
+        Pete += x[key][0].P1.match(/X/g).length;
+      }
+      if (x[key][0].P2.match(/X/g) !== null) {
+        Phil += x[key][0].P2.match(/X/g).length;
+      }
+
+    }
+  }
+  if (Pete > Phil) {
+    return 'Pete Wins!';
+  } else if (Phil > Pete) {
+    return 'Phil Wins!';
+  } else {
+    return 'Draw!';
+  }
+};
+
+//dead ants
+
+const deadAntCount = ants => {
+  if (!ants) {
+    return 0;
+  }
+  let a = ants.split("a").length - 1;
+  let n = ants.split("n").length - 1;
+  let t = ants.split("t").length - 1;
+  let total = ants.split("ant").length - 1;
+  return Math.max(a, n, t) - total;
+};
+
+//coordinate validator
+
+const isValidCoordinates = (coordinates) => {
+
+  coordinates = coordinates.split(", ");
+
+  for (var i = 0; i < coordinates.length; i++) {
+    if (isNaN(coordinates[i]) || coordinates[i].match(/[A-Z]/gi)) {
+      return false;
+    }
+    coordinates[i] = parseFloat(coordinates[i]);
+  }
+  if (coordinates[0] > 90 || coordinates[0] < -90 || coordinates[1] > 180 || coordinates[1] < -180) {
+    return false;
+  }
+  return true;
+};
+
+//reduce but grow
+
+function grow(x) {
+  return x.reduce(function(a, b) {
+    return a * b;
+  });
+}
+
+//Convert boolean values to strings
+
+function boolToWord(bool) {
+  return bool ? 'Yes' : 'No';
+}
+
+//Roof Replacement
+const roofFix = (s, x) => {
+  for (let i in s) {
+    if (s[i] !== ' ') {
+      if (x[i] === '\\' || x[i] === '/') {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+
+//Average Scores
+
+function average(scores) {
+  var sum = scores.reduce(function(a, b) {
+    return (a + b);
+  });
+  return Math.round(sum / scores.length);
+
+}
+
+//BettleJuice
+
+function beetleJuice(name) {
+  return name + '  ' + name + '  ' + name;
+}
+
+//Return a string's even chars
+
+function evenChars(string) {
+  if (string.length < 2 || string.length > 100) {
+    return 'invalid string';
+  }
+  var newArr = [];
+  string = string.split('');
+  for (var i = 0; i < string.length; i++) {
+    if (i % 2 !== 0) {
+      newArr.push(string[i]);
+    }
+  }
+  return newArr;
+}
+
+//Chuck Norris III
+
+const headSmash = (array) => {
+  if (array.length < 1) {
+    return 'Gym is empty';
+  }
+  if (typeof array === 'number') {
+    return 'This isn\'t the gym!!';
+  }
+  for (var i in array) {
+    array[i] = array[i].replace(/O/gi, ' ');
+  }
+  return array;
+};
+
+//True Addition
+
+const count = (n) => n;
+
+// Chuck Norris VI
+
+function price(start, soil, age) {
+  var soilArr = [
+    'Barely used', "Seen a few high kicks", "Blood stained", "Heavily soiled"
+  ];
+  if (isNaN(start) || soilArr.indexOf(soil) == -1 || isNaN(age)) {
+    return 'Chuck is bottomless!';
+  }
+  if (soil === "Barely used") {
+    while (age > 0) {
+      start += .10 * start;
+      age--;
+    }
+  }
+
+  if (soil === "Seen a few high kicks") {
+    while (age > 0) {
+      start += .25 * start;
+      age--;
+    }
+  }
+
+  if (soil === "Blood stained") {
+    while (age > 0) {
+      start += .30 * start;
+      age--;
+    }
+  }
+
+  if (soil === "Heavily soiled") {
+    while (age > 0) {
+      start += .50 * start;
+      age--;
+    }
+  }
+
+  return "$" + start.toFixed(2);
+}
+
+// Gauß needs help! (Sums of a lot of numbers).
+
+function f(n) {
+  console.log(n);
+  var sum = 0;
+  var temp = 0;
+  if (n < 1 || typeof n !== "number" || n !== Math.floor(n.toFixed())) {
+    return false;
+  }
+  while (temp <= n) {
+    sum += temp;
+    temp++;
+  }
+  return sum;
+}
+return sum;
+};
