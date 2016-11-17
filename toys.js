@@ -1249,3 +1249,161 @@ Object.defineProperty(Array.prototype, 'insert', {
     return this;
   }
 });
+
+// Is the string uppercase?
+
+String.prototype.isUpperCase = function() {
+  return this.toUpperCase() == this ? true : false;
+}
+
+// Nuclear Missile Manager
+
+function launchAll(launchMissile) {
+  for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+      launchMissile(i);
+    }, i * 1000);
+  }
+}
+
+// Prefill an Array
+
+const prefill = (n, v) => {
+  if (n === '0' || n === 0) {
+    return [];
+  }
+  let x = ~~n + 2;
+  if (x === 2) {
+    throw new TypeError(n + ' is invalid');
+    return
+  }
+
+  if (isNaN(n) || n < 0 || n % 1 !== 0 || typeof n === 'boolean') {
+    throw new TypeError(n + ' is invalid');
+    return
+  }
+  return Array(n).fill(v || undefined)
+}
+
+// Get list sum recursively
+
+function sumR(x) {
+  if (x.length < 1) {
+    return 0;
+  } else {
+    return x.reduce(function(a, b) {
+      return a + b;
+    })
+  }
+}
+
+// Bubblesort Once
+
+function bubblesortOnce(intArr) {
+  for (let i = 0; i < intArr.length; i++) {
+    if (intArr[i] > intArr[i + 1]) {
+      const temp = intArr[i];
+      intArr[i] = intArr[i + 1];
+      intArr[i + 1] = temp;
+    }
+  }
+  return intArr;
+}
+
+// Formatting a number as price
+
+var numberToPrice = function(number) {
+  if (isNaN(number) || !number) {
+    return 'NaN';
+  }
+  if (number % 1 == 0) {
+    number = number + '.00';
+  }
+  number = number.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+  number += '';
+  let x = number.split('.');
+  let whole = x[0];
+  let part = x.length > 1 ? '.' + x[1] : '';
+  let comma = /(\d+)(\d{3})/;
+  while (comma.test(whole)) {
+    whole = whole.replace(comma, '$1' + ',' + '$2');
+  }
+  if (part.length <= 2) {
+    part = part += '0';
+  }
+  return whole + part;
+}
+
+// Coding 3min : Symmetric Sort
+
+function sc(array) {
+  let left = [],
+    right = [];
+  array = array.sort((a, b) => {
+    return a - b
+  });
+  for (var i = 0; i < array.length; i++) {
+    i % 2 === 0 ? left.push(array[i]) : right.push(array[i]);
+  }
+  right = right.reverse();
+  return left.concat(right);
+}
+
+// Ping-Pong service problem
+
+function service(score) {
+  score = score.split(':');
+  let total = parseInt(score[0]) + parseInt(score[1]);
+  if (total <= 40) {
+    if (~~(total / 5) % 2 === 0) {
+      return 'first'
+    }
+    return 'second'
+  } else if (total >= 40) {
+    if (~~(total / 2) % 2 === 0) {
+      return 'first'
+    }
+    return 'second'
+  }
+}
+
+// Find the position!
+
+function position(letter) {
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz',
+    pos = alphabet.indexOf(letter) + 1;
+  return `Position of alphabet: ${pos}`
+}
+
+// Case swapping
+
+function swap(str) {
+  str = str.split('');
+  for (let i = 0; i < str.length; i++) {
+    str[i] === str[i].toLowerCase() ? str[i] = str[i].toUpperCase() : str[i] = str[i].toLowerCase();
+  }
+  return str.join('');
+}
+
+// Parse float
+
+function parseF(s) {
+  if (s === 0 || s === '0') {
+    return 0;
+  }
+  return parseFloat(s) ? parseFloat(s) : null;
+}
+
+// Authenticate a list of usernames
+
+function authList(arr) {
+  var comp = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].length >= 6 && arr[i].length <= 10 && (/[a-z]/).test(arr[i]) && (/[0-9]/).test(arr[i])) {
+      if (!arr[i].includes('_') && !arr[i].includes('.') && !arr[i].includes('!') && !arr[i].includes('@') && !arr[i].includes('&')) {
+        comp.push(arr[i]);
+      }
+    }
+  }
+  return comp.length === arr.length ? true : false;
+}
