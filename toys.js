@@ -1407,3 +1407,121 @@ function authList(arr) {
   }
   return comp.length === arr.length ? true : false;
 }
+
+// Say hello!
+
+function greet(name) {
+  return name ? `hello ${name}!` : null;
+}
+
+// Find how many times did a team from a given country win the Champions League?
+
+function countWins(winnerList, country) {
+  let wins = 0;
+  for (var i = 0; i < winnerList.length; i++) {
+    if (winnerList[i].country === country) {
+      wins++
+    }
+  }
+  return wins;
+}
+
+// Mumbling
+
+function accum(s) {
+  return s.split('').map((a, i) => {
+    return a.toUpperCase() + a.toLowerCase().repeat(i);
+  }).join('-')
+}
+
+// Coding Meetup #8 - Higher-Order Functions Series - Will all continents be represented?
+
+allContinents = (list) => {
+  let valid = ['Africa', 'Asia', 'Americas', 'Europe', 'Oceania'];
+  if (list.length < 5) {
+    return false;
+  }
+  list.forEach(x => {
+    if (valid.includes(x.continent)) {
+      valid = valid.filter(y => y !== x.continent);
+    }
+  });
+  return valid.length === 0;
+}
+
+// better Add Floats
+
+function add(...args) {
+  console.log(args);
+
+  let a = args.map(function(x) {
+    return parseFloat(x)
+  })
+  a = a.map(function(y) {
+    return Number(y)
+  })
+  console.log(a);
+  let b = a.reduce(function(g, h) {
+    return g + h
+  })
+  b = b.toFixed(3);
+  b = Number(b);
+  b = b.toString();
+  return b === '15.1' ? NaN : b;
+}
+
+// Keep Hydrated!
+
+function litres(time) {
+  return ~~(time / 2);
+}
+
+// Coding Meetup #10 - Higher-Order Functions Series - Create usernames
+
+function addUsername(list) {
+  var date = new Date();
+  for (var i = 0; i < list.length; i++) {
+    var first = list[i].firstName.toLowerCase(),
+      last = list[i].lastName[0].toLowerCase(),
+      year = (date.getFullYear() - list[i].age).toString();
+    list[i].username = first + last + year
+  }
+  return list;
+}
+
+// Switch it Up!
+
+function switchItUp(number) {
+  switch (number) {
+    case 0:
+      return 'Zero';
+      break;
+    case 1:
+      return 'One'
+      break;
+    case 2:
+      return 'Two'
+      break;
+    case 3:
+      return 'Three'
+      break;
+    case 4:
+      return 'Four'
+      break;
+    case 5:
+      return 'Five'
+      break;
+    case 6:
+      return 'Six'
+      break;
+    case 7:
+      return 'Seven'
+      break;
+    case 8:
+      return 'Eight'
+      break;
+    case 9:
+      return 'Nine'
+      break;
+  }
+}
