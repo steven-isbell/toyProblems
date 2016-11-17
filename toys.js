@@ -1525,3 +1525,132 @@ function switchItUp(number) {
       break;
   }
 }
+
+// Remove First and Last Character
+
+function removeChar(str) {
+  str = str.split('');
+  str.pop();
+  str.shift();
+  return str.join('');
+};
+
+// Find the odd int
+
+function findOdd(A) {
+  var a = [],
+    b = [],
+    prev, x;
+
+  A.sort();
+  for (var i = 0; i < A.length; i++) {
+    if (A[i] !== prev) {
+      a.push(A[i]);
+      b.push(1);
+    } else {
+      b[b.length - 1]++;
+    }
+    prev = A[i];
+  }
+  for (var j = 0; j < b.length; j++) {
+    if (b[j] % 2 !== 0) {
+      x = j;
+    }
+  }
+  return a[x];
+}
+
+// FizzBuzz
+
+const fizzbuzz = x => {
+  if (x % 3 === 0 && x % 5 === 0) return 'fizzbuzz';
+  else if (x % 3 === 0) return 'fizz';
+  else if (x % 5 === 0) return 'buzz';
+  else return x;
+}
+
+// Your Basic FizzBuzz kata
+
+fizzbuzz = n => n % 15 == 0 ? "fizz buzz" : n % 5 == 0 ? "buzz" : n % 3 == 0 ? "fizz" : n
+
+// Fizz Buzz
+
+fizzBuzz = n => n % 15 == 0 ? "FizzBuzz" : n % 5 == 0 ? "Buzz" : n % 3 == 0 ? "Fizz" : null;
+
+// Fizz / Buzz
+
+function solution(number) {
+  console.log(number);
+  var arr = [0, 0, 0];
+  for (var i = 1; i < number; i++) {
+    if (i % 5 === 0 && i % 3 === 0) {
+      arr[2]++
+    }
+    if (i % 5 === 0 && i % 3 !== 0) {
+      arr[1]++
+    }
+    if (i % 3 === 0 && i % 5 !== 0) {
+      arr[0]++
+    }
+  }
+  console.log(arr);
+  return arr;
+}
+
+// Find Maximum and Minimum Values of a List
+
+var min = function(list) {
+  return Math.min(...list)
+}
+var max = function(list) {
+  return Math.max(...list);
+}
+
+// Coding Meetup #9 - Higher-Order Functions Series - Is the meetup age-diverse?
+
+isAgeDiverse = list => {
+  let teens = false,
+    twenties = false,
+    thirties = false,
+    forties = false,
+    fifties = false,
+    sixties = false,
+    seventies = false,
+    eighties = false,
+    nineties = false,
+    centenarian = false;
+  list.forEach(function(person) {
+    let age = person.age;
+    if (age > 10 && age < 20) {
+      teens = true;
+    }
+    if (age >= 20 && age < 30) {
+      twenties = true;
+    }
+    if (age >= 30 && age < 40) {
+      thirties = true;
+    }
+    if (age >= 40 && age < 50) {
+      forties = true;
+    }
+    if (age >= 50 && age < 60) {
+      fifties = true;
+    }
+    if (age >= 60 && age < 70) {
+      sixties = true;
+    }
+    if (age >= 70 && age < 80) {
+      seventies = true;
+    }
+    if (age >= 80 && age < 90) {
+      eighties = true;
+    }
+    if (age >= 90 && age < 100) {
+      nineties = true;
+    }
+    if (age > 100) {
+      centenarian = true;
+    }
+  });
+  return teens && twenties && thirties && forties && fifties && sixties && seventies && eighties && nineties && centenarian ? true : false;
+}
