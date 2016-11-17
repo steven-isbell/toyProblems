@@ -48,3 +48,15 @@ SELECT people.*, count(toys.id) as toy_count FROM people JOIN toys on toys.peopl
 -- SQL Basics: Simple JOIN
 
 SELECT products.*, companies.name as company_name FROM products JOIN companies on companies.id = products.company_id;
+
+-- SQL Bug Fixing: Fix the JOIN
+
+SELECT
+  j.job_title,
+  ROUND(SUM(j.salary)/COUNT(p)::numeric,2)::float as average_salary,
+  COUNT(p.id) as total_people,
+  ROUND(SUM(j.salary)::numeric,2)::float as total_salary
+  FROM people p
+  JOIN job j on p.id=j.people_id
+  GROUP BY j.job_title
+  ORDER BY average_salary desc;

@@ -1149,3 +1149,103 @@ function f(n) {
 }
 return sum;
 };
+
+// Sum of positive
+
+function positiveSum(arr) {
+  let newArr = [];
+  if (!arr.length) {
+    return 0
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      newArr.push(arr[i]);
+    }
+  }
+  if (!newArr.length) {
+    return 0
+  }
+  return newArr.reduce((a, b) => {
+    return a + b
+  });
+}
+
+// Get the mean of an array
+
+function getAverage(marks) {
+  return Math.floor(marks.reduce((a, b) => a + b) / marks.length);
+}
+
+// Extending JavaScript Objects: Get First & Last Array Element
+Array.prototype.first = function() {
+  return this[0];
+}
+
+Array.prototype.last = function(arr) {
+  return this[this.length - 1];
+}
+
+// What's your running pace?
+
+function runningPace(distance, time) {
+  time = time.split(':');
+  let min = Number(time[0]),
+    sec = Number(time[1]),
+    total = (min * 60) + sec,
+    pace = (total / distance),
+    date = new Date(pace * 1000),
+    mm = date.getUTCMinutes().toString(),
+    ss = Math.floor(date.getSeconds()).toString();
+  if (ss === '0') {
+    ss = '00';
+  } else if (Number(ss) < 10) {
+    ss = '0' + ss;
+  }
+  return (mm + ':' + ss)
+}
+
+// Pair of gloves
+
+function numberOfPairs(gloves) {
+  gloves = gloves.sort();
+  let count = 0;
+  for (var i = 0; i < gloves.length; i++) {
+    if (gloves[i] === gloves[i + 1]) {
+      count++
+      i++
+    }
+  }
+  return count;
+}
+
+// A Rule of Divisibility by 7
+
+const seven = (m) => {
+  let i = 0;
+  while (m.toString().length > 2) {
+    m = ~~(m / 10) - (m % 10) * 2;
+    i++;
+  }
+  return [m, i];
+}
+
+// Banker's Plan
+
+const fortune = (f0, p, c0, n, i) => {
+  for (var j = 1; j < n; j++) {
+    f0 = f0 * (1 + (p / 100)) - c0;
+    c0 *= (1 + (i / 100));
+  }
+  return f0 >= 0 ? true : false;
+}
+
+// Insert value into an array
+
+Object.defineProperty(Array.prototype, 'insert', {
+  value: function(index, value) {
+
+    index > this.length ? this.push(value) : this.splice(index, 0, value);
+
+    return this;
+  }
+});
