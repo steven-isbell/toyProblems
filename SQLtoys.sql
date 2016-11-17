@@ -25,3 +25,26 @@ SELECT 'hello world!' AS 'Greeting';
 -- SQL Basics: Simple HAVING (OLD)
 
 SELECT * FROM people GROUP BY id HAVING(age > 42);
+
+-- SQL Basics: Simple HAVING
+
+SELECT age, count(age) as total_people FROM people GROUP BY age HAVING count(age) >= 10;
+
+-- SQL Basics: Simple GROUP BY
+
+SELECT age, count(*) as people_count from people group by age;
+
+-- SQL Basics: Create a FUNCTION
+
+CREATE FUNCTION increment (age integer)
+  RETURNS integer
+  AS 'select age + 1'
+  LANGUAGE SQL;
+
+-- SQL Basics: Simple JOIN with COUNT
+
+SELECT people.*, count(toys.id) as toy_count FROM people JOIN toys on toys.people_id = people.id GROUP BY people.id;
+
+-- SQL Basics: Simple JOIN
+
+SELECT products.*, companies.name as company_name FROM products JOIN companies on companies.id = products.company_id;
