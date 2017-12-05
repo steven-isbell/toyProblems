@@ -1654,3 +1654,28 @@ isAgeDiverse = list => {
   });
   return teens && twenties && thirties && forties && fifties && sixties && seventies && eighties && nineties && centenarian ? true : false;
 }
+
+// A printer prints colors represented by the letters "a" through "m". At the end of the print, it puts out a control string to show what colors were printed.  A "good" control string output example might be "aaabbbbhaijjjm" due to the fact that only the letters a through m were used, and no errors (other letters) were used.
+
+// When the printer has a malfunction, the control string marks it with a letter that isn't a through m, for example: "aaaxbbbbyyhwawiwjjjwwm".
+
+// Write a function, printer_error, which will output the error rate of the printer as a string whose numerator is the number of errors and the denominator the length of the control string. Do not reduce the fraction.
+
+// For example:
+// printer_error("aaabbbbhaijjjm") ==> "0/14"
+// printer_error("aaaxbbbbyyhwawiwjjjwwm") ==> "8/22"
+
+const string = 'aaabbbbxyywawhuwjjjmwm';
+
+function printer_error() {
+  return `${string.match(/[N-Z]/gi).length}/${string.length}`;
+}
+// OR
+function printer_error() {
+  const invalid = 'nopqrstuvwxyz';
+  
+  const errors = string.split('').filter(val => invalid.includes(val)).length;
+  return `${errors}/${string.length}`;
+}
+
+printer_error();
