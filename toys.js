@@ -1679,3 +1679,13 @@ function printer_error() {
 }
 
 printer_error();
+
+// You have an array of numbers. Your task is to sort ascending odd numbers and descending even numbers.
+
+// Note that zero is even number. If you have an empty array, you need to return it.
+
+function sortArray(arr) {
+  const odds = arr.filter(x => x % 2 !== 0).sort((a,b)=>a-b)
+  const evens = arr.filter(x => x % 2 !== 1).sort((a,b)=>b-a)
+  return arr.map(x => x % 2 ? odds.shift() : evens.shift())
+}
