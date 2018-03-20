@@ -1702,3 +1702,78 @@ function digital_root(n) {
   }
   return num;
 }
+
+//Some people just have a first name; some people have first and last names and some people have first, middle and last names.
+
+//You task is to initialize the middle names (if there is any).
+
+function initializeNames(name){
+   return name.split(' ').map((val, i, arr) => i !== 0 && i !== arr.length - 1 ? `${val[0]}.` : val).join(' ');
+}
+
+// In this Kata, you will implement the Luhn Algorithm, which is used to help validate credit card numbers.
+
+// Given a positive integer of up to 16 digits, return true if it is a valid credit card number, and false if it is not.
+
+function validate(n){
+  n = n.toString();
+  if (/[^0-9-\s]+/.test(n)) return false;
+
+  let nCheck = 0;
+  let nDigit = 0;
+  let bEven = false;
+  
+  n = n.replace(/\D/g, "");
+
+  for (let i = n.length - 1; i >= 0; i--) {
+    let cDigit = n.charAt(i)
+    let nDigit = parseInt(cDigit, 10);
+
+    if (bEven && (nDigit *= 2) > 9) {
+      nDigit -= 9;
+    }
+
+    nCheck += nDigit;
+    bEven = !bEven;
+  }
+
+  return (nCheck % 10) == 0;
+}
+
+// Modify the kebabize function so that it converts a camel case string into a kebab case.
+
+const kebabize = str => str.replace(/[0-9]/g, "").split('').map((val, i, arr) => val === val.toUpperCase() ? `${isNaN(val) ? i === 0 ? `${val.toLowerCase()}` : `-${val.toLowerCase()}` : ''}` : val).join('');
+
+// You are given two sorted arrays that contain only integers. Your task is to find a way to merge them into a single one, sorted in ascending order. Complete the function mergeArrays(arr1, arr2), where arr1 and arr2 are the original sorted arrays.
+
+const mergeArrays = (arr1, arr2) => [...new Set(arr1.concat(arr2))].sort((a, b) => a > b ? 1 : -1);
+
+// The main idea is to count all the occuring characters(UTF-8) in string. If you have string like this aba then the result should be { 'a': 2, 'b': 1 }
+
+function count (string) {  
+  if (!string) return {};
+  const obj = {};
+  string.split('').forEach(val => {
+    if(!obj.hasOwnProperty(val)) {
+    obj[val] = 0;
+    obj[val] += 1;
+    } else obj[val] += 1;
+  });
+  return obj;
+}
+
+// The object is to count the number of occurances of a specified character (or set of characters) in a string.
+
+/**
+ * Returns the number of times the given character appears in the string,
+ * or if more than one character is supplied an array of character counts.
+ */
+String.prototype.characterCount = function (charsToCount) {
+  if (!charsToCount) return;
+  if (charsToCount.length === 1) return this.split("").filter(val => val === charsToCount).length;
+  charsToCount = !Array.isArray(charsToCount) ? charsToCount.split('') : charsToCount;
+  const mapped = charsToCount.map(val => ({[val]: 0}));
+  this.split('').forEach(val => mapped.forEach(prop => prop.hasOwnProperty(val) ? prop[val] += 1 : null ));
+  return mapped.map(val => val[Object.keys(val)[0]])
+  
+};
