@@ -1789,3 +1789,70 @@ function min(a, b){
     return NaN;
   return (a<b)?a:b;
 }
+
+// Given two strings, the first being a random string and the second being the same as the first, but with three added characters somewhere in the string (three same characters),
+// Write a function that returns the added character
+
+function addedChar(s1, s2){
+  const obj = {};
+  const second = {};
+  s1.split('').forEach(val => {
+    if (!obj[val]) obj[val] = 1;
+    else obj[val] += 1;
+  });
+  
+  s2.split('').forEach(val => {
+    if (!second[val]) second[val] = 1;
+    else second[val] += 1;
+  })
+  
+  for (let key in second) {
+    if (!obj.hasOwnProperty(key)) return key;
+    else if (second[key] > obj[key]) return key;
+  }
+}
+
+// Complete the method so that it formats the words into a single comma separated value. The last word should be separated by the word 'and' instead of a comma. The method takes in an array of strings and returns a single formatted string. Empty string values should be ignored.
+// Empty arrays or null/nil values being passed into the method should result in an empty string being returned.
+
+function formatWords(words){
+  if (!words || !words.length) return '';
+  return words.filter(Boolean).reduce((prev, curr, index, array) => {
+    if (index === 0){
+      return curr;
+    }
+    else if (index === array.length - 1){
+      return prev + ' and ' + curr;
+    }
+    else {
+      return prev + ', ' + curr;
+    }
+  }, '');
+}
+
+// Write a function that takes as an input a string of words, and returns the number of words in that string.
+
+function wordCount(str) {
+  return str.trim().split(' ').length;
+}
+
+// You should get and parse the html of the codewars leaderboard page.
+
+const cheerio = require('cheerio');
+const fetch = require('node-fetch');
+const URL = 'https://www.codewars.com/users/leaderboard';
+
+const solution = async () => {
+  const response = await fetch(URL);
+  const content = await response.text();
+  const $ = cheerio.load(content);
+  const users = {};
+  $('tr[data-username]').each((i, val) => {
+    const item = $(val)
+    const name = item.data('username');
+    const clan = $(item.children().get(2)).text();
+    const honor = parseInt($(item.children().get(3)).text());
+    users[i + 1] = ({ name, clan, honor });
+  });
+  return { position: users };
+}
