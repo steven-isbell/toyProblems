@@ -1856,3 +1856,71 @@ const solution = async () => {
   });
   return { position: users };
 }
+
+// All Star Code Challenge #19
+
+// You work for an ad agency and your boss, Bob, loves a catchy slogan. He's always jumbling together "buzz" words until he gets one he likes. You're looking to impress Boss Bob with a function that can do his job for him.
+
+// Create a function called sloganMaker() that accepts an array of string "buzz" words. The function returns an array of all possible UNIQUE string permutations of the buzz words (concatonated and separated by spaces).
+
+// Your boss is not very bright, so anticipate him using the same "buzz" word more than once, by accident. The function should ignore these duplicate string inputs.
+
+function sloganMaker(permutation) {
+  permutation = [...new Set(permutation)];
+
+  var length = permutation.length,
+      result = [permutation.slice()],
+      c = new Array(length).fill(0),
+      i = 1, k, p;
+
+  while (i < length) {
+    if (c[i] < i) {
+      k = i % 2 && c[i];
+      p = permutation[i];
+      permutation[i] = permutation[k];
+      permutation[k] = p;
+      ++c[i];
+      i = 1;
+      result.push(permutation.slice());
+    } else {
+      c[i] = 0;
+      ++i;
+    }
+  }
+  return result.map(val=>val.join(' '));
+}
+
+// The first century spans from the year 1 up to and including the year 100, The second - from the year 101 up to and including the year 200, etc.
+
+function centuryFromYear(year) {
+  return Math.floor((year - 1) / 100) + 1;
+}
+
+// write me a function stringy that takes a size and returns a string of alternating '1s' and '0s'.
+
+// the string should start with a 1.
+
+// a string with size 6 should return :'101010'.
+
+// with size 4 should return : '1010'.
+
+// with size 12 should return : '101010101010'.
+
+// The size will always be positive and will only use whole numbers.
+
+function stringy(size) {
+  console.log(size);
+   let str = '1';
+   for (let i = 1; i < size; i++) {
+     if (i % 2 !== 0) str += '0'
+     else str += '1';
+   }
+   console.log(str);
+   return str;
+}
+
+// Inspired by Square Every Digit (and of course by the inimitable myjinxin2015's many clever one-line kata), your goal here is precisely the same (to square every digit in the given number), in 36 or fewer characters (<37). Your return value should be in integer format.
+
+// Your input will always be a valid, non-negative integer... no tricks!
+
+sd=x=>+`${x}`.replace(/\d/g,v=>v*v);
