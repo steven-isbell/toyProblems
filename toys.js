@@ -1924,3 +1924,7 @@ function stringy(size) {
 // Your input will always be a valid, non-negative integer... no tricks!
 
 sd=x=>+`${x}`.replace(/\d/g,v=>v*v);
+
+// Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized.
+
+const toCamelCase = str => str.split(/[_-]/).map((val, i) => i === 0 ? val : `${val[0].toUpperCase()}${val.slice(1)}`).join('');
