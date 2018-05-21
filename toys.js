@@ -1928,3 +1928,25 @@ sd=x=>+`${x}`.replace(/\d/g,v=>v*v);
 // Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized.
 
 const toCamelCase = str => str.split(/[_-]/).map((val, i) => i === 0 ? val : `${val[0].toUpperCase()}${val.slice(1)}`).join('');
+
+// Given the string representations of two integers, return the string representation of the sum of those integers.
+
+// For example:
+
+// sumStrings('1','2') // => '3'
+// A string representation of an integer will contain no characters besides the ten numerals "0" to "9".
+
+function addition(a, b, acc = '', carry = 0) {
+  if (!(a.length || b.length || carry)) return acc.replace(/^0+/, '');
+
+  carry = carry + (~~a.pop() + ~~b.pop());
+  acc = carry % 10 + acc;
+  carry = carry > 9;
+
+  return addition(a, b, acc, carry);
+}
+
+function sumStrings(a, b) {
+  if (!a || !b) return a || b;
+  return addition(a.split(''), b.split(''));
+}
