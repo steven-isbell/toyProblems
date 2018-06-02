@@ -1950,3 +1950,8 @@ function sumStrings(a, b) {
   if (!a || !b) return a || b;
   return addition(a.split(''), b.split(''));
 }
+
+// Given Two intgers a , b , find The sum of them , BUT You are not allowed to use the operators + and -
+
+const getSum = (a,b) => b ? getSum(a ^ b, (a & b) << 1) : a;
+
