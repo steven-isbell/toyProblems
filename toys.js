@@ -1955,3 +1955,14 @@ function sumStrings(a, b) {
 
 const getSum = (a,b) => b ? getSum(a ^ b, (a & b) << 1) : a;
 
+// Given an array of intgers , Find the minimum sum which is obtained from summing each Two integers product .
+
+function minSum(arr) {
+  const sorted = [...arr].sort((a, b) => a - b);
+  let total = 0;
+  while (sorted.length) {
+    total += (sorted.pop() * sorted.shift());
+  }
+  return total;
+}
+
