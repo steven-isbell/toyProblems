@@ -1966,3 +1966,11 @@ function minSum(arr) {
   return total;
 }
 
+// Given an array/list [] of integers , Find the product of the k maximal numbers.
+
+function maxProduct(numbers, size){
+  return [...numbers].sort((a, b) => a - b)
+                     .filter((val, i, arr) => i >= arr.length - size)
+                     .reduce((product, value) => product * value, 1);
+}
+
