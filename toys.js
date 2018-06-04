@@ -1974,3 +1974,21 @@ function maxProduct(numbers, size){
                      .reduce((product, value) => product * value, 1);
 }
 
+// Write a function that takes an array of numbers (integers for the tests) and a target number.
+// It should find two different items in the array that, when added together, give the target value.
+// The indices of these items should then be returned in an array like so: [index1, index2].
+
+function twoSum(numbers, target) {
+  const obj = {};
+  
+  numbers.forEach(function(value, index){ 
+    obj[value] = index;
+  });
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (obj[target - numbers[i]]) {
+       return [i, obj[target - numbers[i]]];
+    }
+  }
+}
+
