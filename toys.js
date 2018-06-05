@@ -1992,3 +1992,26 @@ function twoSum(numbers, target) {
   }
 }
 
+// Re-order the characters of a string, so that they are concatenated into a new string in "case-insensitively-alphabetical-order-of-appearance" order. Whitespace and punctuation shall simply be removed!
+// The input is restricted to contain no numerals and only words containing the english alphabet letters.
+
+function alphabetized(s) {
+  const split = s.replace(/[^A-Za-z]/gi, '').split('');
+  let sorted = false;
+  while (!sorted) {
+    sorted = true;
+    for (let i = 0; i < split.length - 1; i++) {
+      if (split[i].toLowerCase() > split[i + 1].toLowerCase()) {
+        swap(split, i, i + 1);
+        sorted = false;
+      }
+    }
+  }
+  return split.join('');
+}
+
+function swap(arr, i, j) {
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
