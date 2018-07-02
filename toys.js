@@ -2030,3 +2030,17 @@ function high(x){
   const max = Math.max(...Object.values(leaderboard));
   return Object.entries(leaderboard).map((val) => val[1] === max ? val[0] : null).filter(val => val !== null)[0];
 }
+
+Given a list lst and a number N, create a new list that contains each number of lst at most N times without reordering.
+For example if N = 2, and the input is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2],
+drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
+
+function deleteNth(arr,n){
+  if (n === 1) return [...new Set(arr)];
+  const count = arr.reduce((acc, curr) => { acc[curr] = 0; return acc }, {});
+  return arr.map(val => {
+    if (count[val] < n) { 
+      count[val]++;
+      return val
+    }}).filter(Boolean);
+}
