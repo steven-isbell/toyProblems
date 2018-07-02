@@ -2044,3 +2044,18 @@ function deleteNth(arr,n){
       return val
     }}).filter(Boolean);
 }
+
+In this simple Kata your task is to create a function that turns a string into a Mexican Wave.
+You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up.
+
+function wave(args){
+  const arr = []
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] !== ' ') {
+      arr.push(`${args.slice(0, i)}${args[i].toUpperCase()}${args.slice(i + 1, args.length)}`)
+    }
+  }  
+  return arr;
+}
+
+const wave = args => args.split('').map((val, i) => args[i] !== ' ' ? `${args.slice(0, i)}${args[i].toUpperCase()}${args.slice(i + 1, args.length)}` : null).filter(Boolean);
