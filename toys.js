@@ -2031,9 +2031,9 @@ function high(x){
   return Object.entries(leaderboard).map((val) => val[1] === max ? val[0] : null).filter(val => val !== null)[0];
 }
 
-Given a list lst and a number N, create a new list that contains each number of lst at most N times without reordering.
-For example if N = 2, and the input is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2],
-drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
+// Given a list lst and a number N, create a new list that contains each number of lst at most N times without reordering.
+// For example if N = 2, and the input is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2],
+// drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
 
 function deleteNth(arr,n){
   if (n === 1) return [...new Set(arr)];
@@ -2045,8 +2045,8 @@ function deleteNth(arr,n){
     }}).filter(Boolean);
 }
 
-In this simple Kata your task is to create a function that turns a string into a Mexican Wave.
-You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up.
+// In this simple Kata your task is to create a function that turns a string into a Mexican Wave.
+// You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up.
 
 function wave(args){
   const arr = []
@@ -2059,3 +2059,10 @@ function wave(args){
 }
 
 const wave = args => args.split('').map((val, i) => args[i] !== ' ' ? `${args.slice(0, i)}${args[i].toUpperCase()}${args.slice(i + 1, args.length)}` : null).filter(Boolean);
+
+// Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the sorted (ascending) order.
+
+function flattenAndSort(array) {
+  return array.reduce((acc, cur) => acc.concat(cur), []).sort((a, b) => a - b)
+}
+
