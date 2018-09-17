@@ -2078,3 +2078,9 @@ function isFlush(cards) {
   const suit = cards[0].slice(-1);
   return cards.every(val => val.slice(-1) === suit);
 }
+
+// Convert number to binary
+
+function toBinary(n){
+  return parseInt(n.toString(2));
+}
