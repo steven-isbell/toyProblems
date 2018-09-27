@@ -2084,3 +2084,8 @@ function isFlush(cards) {
 function toBinary(n){
   return parseInt(n.toString(2));
 }
+
+// product of array items
+function product(values) {
+  return values && values.length ? values.reduce((acc, cur) => acc * cur , 1) : null;
+}
