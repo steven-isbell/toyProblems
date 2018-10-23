@@ -2089,3 +2089,31 @@ function toBinary(n){
 function product(values) {
   return values && values.length ? values.reduce((acc, cur) => acc * cur , 1) : null;
 }
+
+// Given two array of integers(arr1,arr2). 
+// Your task is going to find a pair of numbers(an element in arr1, and another element in arr2), their difference is as big as possible(absolute value); Again, you should to find a pair of numbers, their difference is as small as possible.
+// Return the maximum and minimum difference values by an array: [ max difference, min difference ]
+
+function maxAndMin(arr1,arr2){
+  arr1.sort();
+  arr2.sort();
+  
+  let smallest;
+  let largest;
+  
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      if (!smallest) smallest = Math.abs(arr1[i] - arr2[j]);
+      if (!largest) largest = Math.abs(arr1[i] - arr2[j]);
+      if (Math.abs(arr1[i] - arr2[j]) < smallest) {
+        smallest = Math.abs(arr1[i] - arr2[j])
+      }
+      if (Math.abs(arr1[i] - arr2[j]) > largest) {
+        largest = Math.abs(arr1[i] - arr2[j])
+      }
+    }
+  }
+  
+  
+  return [largest, smallest];
+}
