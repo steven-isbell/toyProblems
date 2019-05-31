@@ -2,7 +2,7 @@
 
 function remove(s, n) {
   for (var i = 0; i < n; i++) {
-    s = s.replace('!', '');
+    s[i] = s[i] === '!' ? '' : s[i]
   }
   return s;
 }
@@ -12,9 +12,8 @@ function remove(s, n) {
 const removeAgain = s => {
   if (s.charAt(s.length - 1) === '!') {
     return s.slice(0, -1);
-  } else {
-    return s;
   }
+  return s;
 };
 
 // repeat the string
