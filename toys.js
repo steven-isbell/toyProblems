@@ -2156,3 +2156,9 @@ function isPrime(num) {
 
  return true;
 }
+
+// How many arguments
+
+const args_count = (...args) => args.length;
+
+
