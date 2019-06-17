@@ -2161,4 +2161,40 @@ function isPrime(num) {
 
 const args_count = (...args) => args.length;
 
+// Let us consider this example (array written in general format):
 
+// ls = [0, 1, 3, 6, 10]
+
+// Its following parts:
+
+// ls = [0, 1, 3, 6, 10]
+// ls = [1, 3, 6, 10]
+// ls = [3, 6, 10]
+// ls = [6, 10]
+// ls = [10]
+// ls = []
+// The corresponding sums are (put together in a list): [20, 20, 19, 16, 10, 0]
+
+// The function parts_sums (or its variants in other languages) will take as parameter a list ls and return a list of the sums of its parts as defined above.
+
+function partsSums(ls) {
+  const container = [];
+  function shift(arr) {
+    if (!arr.length) return;
+    const sum = arr.reduce((acc, cur) => acc += cur);
+    arr.shift();
+    container.push(sum);
+    return shift(arr)
+  }
+  shift(ls);
+  return [...container, 0];
+}
+
+function partsSums(ls) {
+  const container = [];
+   while (ls.length) {
+     container.push(ls.reduce((acc, cur) => acc += cur));
+     ls.shift();
+   }
+   return [...container, 0];
+}
