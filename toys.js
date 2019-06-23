@@ -2209,3 +2209,11 @@ function validPhoneNumber(phoneNumber){
   const phoneNumberPattern = /^\((\d{3})\)[ ](\d{3})[-](\d{4})$/;
   return phoneNumberPattern.test(phoneNumber);
 }
+
+// Complete the solution so that it returns a formatted string.
+// The return value should equal "Value is VALUE" where value is a 5 digit padded number.
+
+function solution(value){
+  const append = `0000${value}`.slice(-5)
+  return `Value is ${append}`
+}
