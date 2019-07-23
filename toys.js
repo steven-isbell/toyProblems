@@ -2225,3 +2225,9 @@ function solution(value){
 function descendingOrder(n){
   return parseInt(('' + n).split('').sort((a, b) => b - a).join(''), 10);
 }
+
+// Given a number , Return _The Maximum number _ could be formed from the digits of the number given.
+
+function maxNumber(n){
+  return +(n + '').split('').sort((a, b) => b - a).join('');
+}
