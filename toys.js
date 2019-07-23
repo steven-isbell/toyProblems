@@ -2231,3 +2231,29 @@ function descendingOrder(n){
 function maxNumber(n){
   return +(n + '').split('').sort((a, b) => b - a).join('');
 }
+
+// Write three functions add, subtract, and multiply such that each require two invocations.
+
+function add(a, b) {
+  return function(b) {
+    return a + b;
+  }
+}
+
+function subtract(a, b) {
+  return function (b) {
+    return a - b;
+  }
+}
+
+function multiply(a, b) {
+  return function(b) {
+    return a * b;
+  }
+}
+
+function apply(fn) {
+  return function(a, b) {
+    return fn.apply(this, [a, b]);
+  }
+}
